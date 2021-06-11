@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const [peoples, setPeoples] = useState([
-    {name: 'Arif', key: 1},
-    {name: 'Semi', key: 2},
-    {name: 'Araf', key: 3},
-    {name: 'Sajib', key: 4},
-    {name: 'Asif', key: 5},
-    {name: 'Anis', key: 6},
-    {name: 'Hosneara', key: 7},
-    {name: 'Arif', key: 8},
-    {name: 'Semi', key: 9},
-    {name: 'Araf', key: 10},
-    {name: 'Sajib', key: 11},
-    {name: 'Asif', key: 12},
-    {name: 'Anis', key: 13},
-    {name: 'Hosneara', key: 14},
+    {name: 'Arif', id: 1},
+    {name: 'Semi', id: 2},
+    {name: 'Araf', id: 3},
+    {name: 'Sajib', id: 4},
+    {name: 'Asif', id: 5},
+    {name: 'Anis', id: 6},
+    {name: 'Hosneara', id: 7},
+    {name: 'Arif', id: 8},
+    {name: 'Semi', id: 9},
+    {name: 'Araf', id: 10},
+    {name: 'Sajib', id: 11},
+    {name: 'Asif', id: 12},
+    {name: 'Anis', id: 13},
+    {name: 'Hosneara', id: 14},
   ])
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <FlatList 
+        numColumns='2'
+        keyExtractor={(item) => item.id}
+        data={peoples}
+        renderItem={({item}) => (
+            <View style={styles.list} key={item.key}>
+              <Text> {item.name} </Text>
+            </View>
+        )}
+      />
+      {/* <ScrollView>
         {
           peoples.map(item => (
             <View style={styles.list} key={item.key}>
@@ -28,7 +38,7 @@ export default function App() {
             </View>
           ))
         }
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
@@ -46,6 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 30,
     marginTop: 20,
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    marginHorizontal: 10
   }
 });
