@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
   const [peoples, setPeoples] = useState([
@@ -10,14 +10,14 @@ export default function App() {
     {name: 'Asif', id: 5},
     {name: 'Anis', id: 6},
     {name: 'Hosneara', id: 7},
-    {name: 'Arif', id: 8},
-    {name: 'Semi', id: 9},
-    {name: 'Araf', id: 10},
-    {name: 'Sajib', id: 11},
-    {name: 'Asif', id: 12},
-    {name: 'Anis', id: 13},
-    {name: 'Hosneara', id: 14},
   ])
+
+  const handleRemove = (id) => {
+    console.log(id)
+    setPeoples(prevState => {
+      return prevState.filter(item => item.id != id)
+    })
+  }
   return (
     <View style={styles.container}>
       <FlatList 
@@ -25,20 +25,13 @@ export default function App() {
         keyExtractor={(item) => item.id}
         data={peoples}
         renderItem={({item}) => (
+          <TouchableOpacity onPress={ () => handleRemove(item.id)}>
             <View style={styles.list} key={item.key}>
               <Text> {item.name} </Text>
             </View>
+          </TouchableOpacity>
         )}
       />
-      {/* <ScrollView>
-        {
-          peoples.map(item => (
-            <View style={styles.list} key={item.key}>
-              <Text> {item.name} </Text>
-            </View>
-          ))
-        }
-      </ScrollView> */}
     </View>
   );
 }
