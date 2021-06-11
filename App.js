@@ -16,7 +16,6 @@ export default function App() {
       <View style={styles.buttonContainer}>
         <Button title='update state' onPress={handleState} />
       </View>
-      
     </View>
   );
 }
