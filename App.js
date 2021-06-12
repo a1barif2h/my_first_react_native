@@ -57,10 +57,15 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#fff',
   },
   content: {
+    flex: 1,
     marginTop: 20,
     padding: 30,
+  },
+  list: {
+    flex: 1,
   }
 });
